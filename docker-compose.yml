@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  ultra_backend_srv:
+    env_file: ./.env
+    container_name: ultra_api_test
+    build: ./
+    links:
+      - ultra_db_srv
+    depends_on:
+      - ultra_db_srv
+    volumes:
+      - '.:/home/ultra'
+    ports:
+      - "${API_PORT}:${API_PORT}"
+      - "9229:9229"
+
+  ultra_db_srv:
+    container_name: ultra_db_test
+    image: postgres:latest
+    ports:
+      - "${DB_EXPOSE_PORT}:5432"
+    volumes:
+      - postgres_data_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PWD}
+
+volumes:
+  postgres_data_volume:
