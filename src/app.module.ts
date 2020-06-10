@@ -3,7 +3,7 @@ import { ManufacturersModule } from './manufacturers/manufacturers.module';
 import { OwnersModule } from './owners/owners.module';
 import { CarsModule } from './cars/cars.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { typeOrmOptions } from './app.constants';
+import { typeOrmOptions } from './typeorm-config';
 
 @Module({
   imports: [
