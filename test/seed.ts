@@ -3,10 +3,10 @@ import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConne
 import { generateManufacturer, generateOwner } from './utils';
 import { Manufacturer } from '../src/manufacturers/manufacturer.entity';
 import { Owner } from '../src/owners/owner.entity';
-import { typeOrmOptionsSeed } from '../src/app.constants';
+import typeOrmOpts = require('../src/typeorm-config-for-cli');
 
 (async () => {
-  const conn = await createConnection(typeOrmOptionsSeed as PostgresConnectionOptions);
+  const conn = await createConnection(typeOrmOpts as PostgresConnectionOptions);
 
   const ownerA = generateOwner(19);
   const manufacturerA = generateManufacturer();
